@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Button, Modal } from "react-bootstrap";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ViewAllServiceRequests = () => {
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
@@ -59,7 +60,7 @@ const ViewAllServiceRequests = () => {
 
   const retrieveAllServiceRequests = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/service/request/fetch/all"
+      `${API_BASE_URL}/service/request/fetch/all`
     );
     return response.data;
   };
@@ -68,7 +69,7 @@ const ViewAllServiceRequests = () => {
   const downloadRequirement = async (request) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/service/request/requirement/${request.requirement_filename}/download`,
+        `${API_BASE_URL}/service/request/requirement/${request.requirement_filename}/download`,
         {
           responseType: "blob", // Important to handle binary data
         }
@@ -135,7 +136,7 @@ const ViewAllServiceRequests = () => {
                       <td>
                         <img
                           src={
-                            "http://localhost:8080/api/service/" +
+                            `${API_BASE_URL}/service/` +
                             request.service.image1
                           }
                           class="img-fluid"

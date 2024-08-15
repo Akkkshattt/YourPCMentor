@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/apiConfig";
 //import Razorpay from "razorpay";
 
 const MyWallet = () => {
@@ -39,7 +40,7 @@ const MyWallet = () => {
 
   const retrieveMyWallet = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/user-id?userId=" + user.id
+      `${API_BASE_URL}/user/fetch/user-id?userId=` + user.id
     );
 
     return response.data;
@@ -58,7 +59,7 @@ const MyWallet = () => {
   
 
   const addMoneyInWallet = (e) => {
-    fetch("http://localhost:8080/api/user/update/wallet", {
+    fetch(`${API_BASE_URL}/user/update/wallet`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -80,7 +81,7 @@ const MyWallet = () => {
               console.log(response.razorpay_signature);
               response.razorpay_order_id = options.orderId;
 
-              fetch("http://localhost:8080/api/user/razorpPay/response", {
+              fetch(`${API_BASE_URL}/user/razorpPay/response`, {
                 method: "PUT",
                 headers: {
                   Accept: "application/json",
@@ -171,7 +172,7 @@ const MyWallet = () => {
 
                 response.razorpay_order_id = options.orderId;
 
-                fetch("http://localhost:8080/api/user/razorpPay/response", {
+                fetch(`${API_BASE_URL}/user/razorpPay/response`, {
                 method: "PUT",
                 headers: {
                   Accept: "application/json",

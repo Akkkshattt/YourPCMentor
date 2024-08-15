@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const AddServiceForm = () => {
   const expert = JSON.parse(sessionStorage.getItem("active-expert"));
@@ -24,7 +25,7 @@ const AddServiceForm = () => {
 
   const retrieveAllCategories = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/category/fetch/all"
+      `${API_BASE_URL}/category/fetch/all`
     );
     return response.data;
   };
@@ -76,7 +77,7 @@ const AddServiceForm = () => {
     formData.append("image3", selectedImage3);
 
     axios
-      .post("http://localhost:8080/api/service/add", formData, {
+      .post(`${API_BASE_URL}/service/add`, formData, {
         headers: {
           // Authorization: "Bearer " + guide_jwtToken, // Replace with your actual JWT token
         },

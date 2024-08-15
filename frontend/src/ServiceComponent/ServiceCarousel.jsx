@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config/apiConfig";
 import carousel1 from "../images/carousel_1.png";
 
 const ServiceCarousel = (service) => {
@@ -32,7 +33,7 @@ const ServiceCarousel = (service) => {
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            src={"http://localhost:8080/api/service/" + service.item.image1}
+            src={`${API_BASE_URL}/service/` + service.item.image1}
             class="d-block w-100"
             alt="..."
             style={{
@@ -42,7 +43,7 @@ const ServiceCarousel = (service) => {
         </div>
         <div class="carousel-item">
           <img
-            src={"http://localhost:8080/api/service/" + service.item.image2}
+            src={`${API_BASE_URL}/service/` + service.item.image2}
             class="d-block w-100"
             alt="..."
             style={{
@@ -52,7 +53,7 @@ const ServiceCarousel = (service) => {
         </div>
         <div class="carousel-item">
           <img
-            src={"http://localhost:8080/api/service/" + service.item.image3}
+            src={`${API_BASE_URL}/service/` + service.item.image3}
             class="d-block w-100"
             alt="..."
             style={{

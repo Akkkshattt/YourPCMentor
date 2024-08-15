@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 // import ServiceCarousel from "./ServiceCarousel";
 import { Button, Modal } from "react-bootstrap";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ServiceDetailPage = () => {
   const { serviceId } = useParams();
@@ -82,7 +83,7 @@ const ServiceDetailPage = () => {
 
   const retrieveService = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/service/fetch/id-wise?serviceId=" + serviceId
+      `${API_BASE_URL}/service/fetch/id-wise?serviceId=` + serviceId
     );
     console.log(response.data);
     return response.data;
@@ -130,7 +131,7 @@ const ServiceDetailPage = () => {
     formData.append("requirement_filename", selectedImage);
 
     axios
-      .post("http://localhost:8080/api/service/request/add", formData, {
+      .post(`${API_BASE_URL}/service/request/add`, formData, {
         headers: {
           // Authorization: "Bearer " + guide_jwtToken, // Replace with your actual JWT token
         },

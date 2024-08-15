@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ViewExpertServices = () => {
   const [allUser, setAllUser] = useState([]);
@@ -23,7 +24,7 @@ const ViewExpertServices = () => {
 
   const retrieveAllServices = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/service/fetch/tech-expert-wise?techExpertId=" +
+      `${API_BASE_URL}/service/fetch/tech-expert-wise?techExpertId=` +
         expert.id
     );
     return response.data;
@@ -37,7 +38,7 @@ const ViewExpertServices = () => {
   };
 
   const deleteExpertService = (serviceId, e) => {
-    fetch("http://localhost:8080/api/service/delete?serviceId=" + serviceId, {
+    fetch(`${API_BASE_URL}/service/delete?serviceId=` + serviceId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -139,7 +140,7 @@ const ViewExpertServices = () => {
                       <td>
                         <img
                           src={
-                            "http://localhost:8080/api/service/" +
+                            `${API_BASE_URL}/service/` +
                             service.image1
                           }
                           class="img-fluid"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ViewAllTechGuides = () => {
   const [allUser, setAllUser] = useState([]);
@@ -20,7 +21,7 @@ const ViewAllTechGuides = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/role-wise?role=Tech Expert",
+      `${API_BASE_URL}/user/fetch/role-wise?role=Tech Expert`,
       {
         headers: {
           //   Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token
@@ -40,7 +41,7 @@ const ViewAllTechGuides = () => {
 
   const deleteExpert = (expertId, e) => {
     fetch(
-      "http://localhost:8080/api/user/delete/tech-expert?techExpertId=" +
+      `${API_BASE_URL}/user/delete/tech-expert?techExpertId=` +
         expertId,
       {
         method: "DELETE",

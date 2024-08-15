@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Button, Modal } from "react-bootstrap";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ViewCustomerServiceRequests = () => {
   const customer_jwtToken = sessionStorage.getItem("customer-jwtToken");
@@ -52,7 +53,7 @@ const ViewCustomerServiceRequests = () => {
 
   const retrieveAllServiceRequests = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/service/request/fetch/customer-wise?customerId=" +
+      `${API_BASE_URL}/service/request/fetch/customer-wise?customerId=` +
         customer.id
     );
     return response.data;
@@ -78,7 +79,7 @@ const ViewCustomerServiceRequests = () => {
   const downloadRequirement = async (request) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/service/request/requirement/${request.requirement_filename}/download`,
+        `${API_BASE_URL}/service/request/requirement/${request.requirement_filename}/download`,
         {
           responseType: "blob", // Important to handle binary data
         }
@@ -103,7 +104,7 @@ const ViewCustomerServiceRequests = () => {
 
   const cancelServiceRequest = (serviceRequestId) => {
     fetch(
-      "http://localhost:8080/api/service/request/close?serviceRequestId=" +
+      `${API_BASE_URL}/service/request/close?serviceRequestId=` +
         serviceRequestId,
       {
         method: "GET",
@@ -168,7 +169,7 @@ const ViewCustomerServiceRequests = () => {
     addResponse.negotiationId = negotiationId;
 
     fetch(
-      "http://localhost:8080/api/service/request/negotiation/customer/update",
+      `${API_BASE_URL}/service/request/negotiation/customer/update`,
       {
         method: "POST",
         headers: {
@@ -274,7 +275,7 @@ const ViewCustomerServiceRequests = () => {
                       <td>
                         <img
                           src={
-                            "http://localhost:8080/api/service/" +
+                            `${API_BASE_URL}/service/` +
                             request.service.image1
                           }
                           class="img-fluid"

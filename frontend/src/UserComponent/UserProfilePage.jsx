@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ".././css/UserProfile.css"
+import { API_BASE_URL } from "../config/apiConfig";
 
 const UserProfilePage = () => {
   const { userId } = useParams();
@@ -37,7 +38,7 @@ const UserProfilePage = () => {
 
   const retrieveUser = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/user-id?userId=" + userId
+      `${API_BASE_URL}/user/fetch/user-id?userId=` + userId
     );
     return response.data;
   };

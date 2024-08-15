@@ -5,6 +5,7 @@ import Footer from "../NavbarComponent/Footer";
 import { useNavigate } from "react-router-dom";
 import ServiceCard from "../ServiceComponent/ServiceCard";
 import ".././css/HomePage.css"
+import { API_BASE_URL } from "../config/apiConfig";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -51,14 +52,14 @@ const HomePage = () => {
 
   const retrieveAllServices = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/service/fetch/all"
+      `${API_BASE_URL}/service/fetch/all`
     );
     return response.data;
   };
 
   const retrieveAllCategories = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/category/fetch/all"
+      `${API_BASE_URL}/category/fetch/all`
     );
     return response.data;
   };
@@ -66,14 +67,14 @@ const HomePage = () => {
   const searchServices = async () => {
     if (category !== "") {
       const response = await axios.get(
-        "http://localhost:8080/api/service/fetch/category-wise?category=" +
+        `${API_BASE_URL}/service/fetch/category-wise?category=` +
           category
       );
 
       return response.data;
     } else if (subCategoryId !== "" || subCategoryId !== "0") {
       const response = await axios.get(
-        "http://localhost:8080/api/service/fetch/sub-category-wise?subCategoryId=" +
+        `${API_BASE_URL}/service/fetch/sub-category-wise?subCategoryId=` +
           subCategoryId
       );
       return response.data;

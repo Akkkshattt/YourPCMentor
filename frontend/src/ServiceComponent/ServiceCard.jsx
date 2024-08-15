@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import dollor from "../images/dollor_logo.png";
 import timing from "../images/timing_logo.png";
 import experience from "../images/experience_logo.png";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ServiceCard = (service) => {
   const descriptionToShow = (description, maxLength) => {
@@ -30,7 +31,7 @@ const ServiceCard = (service) => {
         <div className="row g-0">
           {/* Left side - Company Logo */}
           {/* <div className="col-md-4 d-flex align-items-center justify-content-center"> */}
-            {/* <img  src={"http://localhost:8080/api/service/" + service.item.image1  className="card-img-top rounded img-fluid"
+            {/* <img  src={`${API_BASE_URL}/service/` + service.item.image1  className="card-img-top rounded img-fluid"
               alt="event image"
               style={{
               maxHeight: "150px",

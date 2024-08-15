@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config/apiConfig";
 
 const ViewAllCategories = () => {
   const [allCategories, setAllCategories] = useState([]);
@@ -23,15 +24,15 @@ const ViewAllCategories = () => {
 
   const retrieveAllCategory = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/category/fetch/all"
-    );
+      `${API_BASE_URL}/category/fetch/all`
+    ); 
     console.log(response.data);
     return response.data;
   };
 
   const deleteCategory = (categoryId, e) => {
     fetch(
-      "http://localhost:8080/api/category/delete?categoryId=" + categoryId,
+      `${API_BASE_URL}/category/delete?categoryId=` + categoryId,
       {
         method: "DELETE",
         headers: {
