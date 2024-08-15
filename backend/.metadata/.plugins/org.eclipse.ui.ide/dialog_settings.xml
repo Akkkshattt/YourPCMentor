@@ -38,6 +38,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\CDAC\Advanced java\Adv_Java\your_pc_mentor"/>
+			<item value="D:\CDAC\Advanced java\Adv_Java"/>
 			<item value="D:\CDAC\Advanced java\Day 8-3\Day 8\CustomtagDemo"/>
 			<item value="C:\Users\manoj\OneDrive\Desktop\Projects\PC Builder\PC Builder\pc-builder-backend"/>
 		</list>
